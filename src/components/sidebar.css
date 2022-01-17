@@ -4,14 +4,52 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1rem;
     color: rgb(214, 214, 214);
+    overflow: hidden;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    transition: width 0.2s ease-in;
+    position: relative;
+}
+.sidebar.inactive{
+    width: 4rem;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+}
+.hamburger{
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.sidebar.inactive .hamburger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar.inactive .header {
+    display: none;
+}
+.header h1{
+    font-size: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.header button{
+    background-color: transparent;
+    border: none;
+    color: rgb(214, 214, 214);
+    font-size: 1.4rem;
+    cursor: pointer;
 }
 .search{
     display: flex;
     background-color: rgb(51, 51, 51);
     padding: 0.5rem;
     border-radius: 4px;
+    margin-top: 1rem;
 }
 .search input{
     background-color: transparent;
@@ -19,6 +57,7 @@
     color: rgb(214, 214, 214);
     width: 100%;
     outline: none;
+    padding-left: 0.5rem;
 }
 .search button{
     background-color: transparent;
@@ -27,19 +66,73 @@
     font-size: 1rem;
     padding-right: 0.5rem;
     cursor: pointer;
+    /* border: 1px solid white; */
+    width: 1rem;
 }
-.header{
+.divider{
+    border: 1px solid rgb(214, 214, 214);
+    background-color: rgb(214, 214, 214);
+    border-radius: 2px;
+    margin-top: 1rem;
+}
+.menuItem{
+    /* border: 2px solid white; */
+    margin-top: 1rem;
+    padding: 0.5rem;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
+    flex-wrap: nowrap;
 }
-.header h1{
-    font-size: 2rem;
+.menuItem a{
+    margin-left: 0.5rem;
+    white-space: nowrap;
+    text-decoration: none;
+    color: rgb(214, 214, 214);
+    user-select: none;
+    cursor: pointer;
 }
-.header button{
+.menuItem button{
     background-color: transparent;
     border: none;
     color: rgb(214, 214, 214);
-    font-size: 1.2rem;
+    font-size: 1rem;
     cursor: pointer;
+}
+.sidebar.inactive .menuItem a{
+    display: none;
+}
+.sidebar .footer{
+    background-color: rgb(51, 51, 51);
+    padding: 0.5rem;
+    border-radius: 4px;
+    position: absolute;
+    width: 85.5%;
+    bottom: 1rem;
+}
+.sidebar .footer div{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.sidebar .footer button{
+    background-color: transparent;
+    border: none;
+    color: rgb(214, 214, 214);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidebar .footer span{
+    color: rgb(214, 214, 214);
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+.sidebar .footer .logout{
+    margin-top: 1rem;
+}
+.sidebar.inactive .footer{
+    width: fit-content;
+}
+.sidebar.inactive span{
+    display: none;
 }
