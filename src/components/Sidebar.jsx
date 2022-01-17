@@ -8,7 +8,20 @@ import { BiSupport, BiLogOut } from 'react-icons/bi'
 import { FaUserCircle } from 'react-icons/fa'
 
 export default function Sidebar() {
+
     const [Expanded, setExpanded] = useState(true);
+    const [SubMenu, setSubMenu] = useState(false);
+
+    const handleIconClick = () => {
+        if(!Expanded){
+            setExpanded(!Expanded);
+        }
+    }
+    useEffect(() => {
+        if(!Expanded){
+            setSubMenu(false);
+        }
+    }, [Expanded])
 
     return (
         <div className={`sidebar ${Expanded ? "" : "inactive"}`}>
@@ -24,29 +37,50 @@ export default function Sidebar() {
                 <GiHamburgerMenu />
             </div>
             <div className="search">
-                <button><BsSearch /></button>
+                <button onClick={() => handleIconClick()}><BsSearch /></button>
                 <input type="text" placeholder='Search' />
             </div>
             <div className="divider">
 
             </div>
-            <div className="menuItem">
-                <button><AiFillHome /></button>
-                <a href='#'>
-                    Home
-                </a>
-            </div>
-            <div className="menuItem">
-                <button><MdCategory /></button>
-                <a>
-                    Categories
-                </a>
-            </div>
-            <div className="menuItem">
-                <button><BiSupport /></button>
-                <a href='#'>
-                    Contact & Support
-                </a>
+            <div className="menuItemsContainer">
+                <div className="menuItem">
+                    <button onClick={() => handleIconClick()}><AiFillHome /></button>
+                    <a href='#'>
+                        Home
+                    </a>
+                </div>
+                <div className='menuItem' onClick={() => setSubMenu(!SubMenu)}>
+                    <button onClick={() => handleIconClick()}><MdCategory /></button>
+                    <a>
+                        Categories
+                    </a>
+                </div>
+                <div className={`sub-menu-container ${!SubMenu ? "subMenuClose" : ""}`}>
+                    <ul className="sub-menu">
+                        <li>
+                            <a href="" className="sub-menu-item">All</a>
+                        </li>
+                        <li>
+                            <a href="" className="sub-menu-item">Entertainment</a>
+                        </li>
+                        <li>
+                            <a href="" className="sub-menu-item">Sports</a>
+                        </li>
+                        <li>
+                            <a href="" className="sub-menu-item">Technology</a>
+                        </li>
+                        <li>
+                            <a href="" className="sub-menu-item">Health</a>
+                        </li>
+                    </ul>
+                </div>
+                <div className="menuItem">
+                    <button onClick={() => handleIconClick()}><BiSupport /></button>
+                    <a href='#'>
+                        Contact & Support
+                    </a>
+                </div>
             </div>
             <div className="footer">
                 <div className="userinfo">
